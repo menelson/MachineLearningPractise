@@ -4,15 +4,6 @@ from sklearn.tree import DecisionTreeClassifier
 # Want this for the visualization of the decision tree
 from sklearn.tree import export_graphviz
 
-export_graphviz(
-        tree_clf,
-        out_file=image_path("iris_tree.dot"),
-        feature_names=iris.feature_names[2:],
-        class_names=iris.target_names,
-        rounded=True,
-        filled=True
-    )
-
 # Load the iris data-set
 iris = load_iris()
 X = iris.data[:, 2:] # petal length and width
@@ -22,6 +13,17 @@ y = iris.target
 # It's a very simple tree, with a depth of only two
 tree_clf = DecisionTreeClassifier(max_depth=2, random_state=42)
 tree_clf.fit(X, y)
+
+'''
+export_graphviz(
+        tree_clf,
+        out_file=image_path("iris_tree.dot"),
+        feature_names=iris.feature_names[2:],
+        class_names=iris.target_names,
+        rounded=True,
+        filled=True
+    )
+'''
 
 # SkLearn uses the CART algorithm to train decision trees, based
 # on a cost function which seeks to minimize the impurities between
